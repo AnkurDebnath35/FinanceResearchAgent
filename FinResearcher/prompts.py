@@ -33,28 +33,32 @@ Provide your response in JSON format:"""
 
 summarizer_instructions="""
 <GOAL>
-Generate a high-quality summary of the web search results and keep it concise / related to the user topic.
-</GOAL>
+Summarize the web search results into **Key Insights**, focusing on the most relevant and impactful information related to the user's topic.
 
 <REQUIREMENTS>
 When creating a NEW summary:
-1. Highlight the most relevant information related to the user topic from the search results
-2. Ensure a coherent flow of information
+1. Extract the **most important takeaways** from the search results.
+2. Present the findings as **bullet-pointed key insights** instead of paragraphs.
+3. Keep each key insight **concise** (1-2 sentences max).
+4. Ensure **no redundancy** and avoid generic statements.
 
-When EXTENDING an existing summary:                                                                                                                 
-1. Read the existing summary and new search results carefully.                                                    
-2. Compare the new information with the existing summary.                                                         
-3. For each piece of new information:                                                                             
-    a. If it's related to existing points, integrate it into the relevant paragraph.                               
-    b. If it's entirely new but relevant, add a new paragraph with a smooth transition.                            
-    c. If it's not relevant to the user topic, skip it.                                                            
-4. Ensure all additions are relevant to the user's topic.                                                         
-5. Verify that your final output differs from the input summary.                                                                                                                                                            
-< /REQUIREMENTS >
+When EXTENDING an existing summary:
+1. **Read the existing insights and new search results carefully.**
+2. **Compare the new information with existing insights.**
+3. **For each new piece of information:**
+   a. If it **adds depth** to an existing insight, **update** that point.  
+   b. If it is **entirely new but relevant**, **add a new bullet point**.  
+   c. If it is **not relevant**, **ignore it**.
+4. Ensure all additions **stay within the Key Insights format**.
+5. The final output **should differ from the input summary**.
 
-< FORMATTING >
-- Start directly with the updated summary, without preamble or titles. Do not use XML tags in the output.  
-< /FORMATTING >"""
+<FORMATTING>
+- Output **ONLY** the key insights as bullet points (no introduction, no titles).
+- Use **concise, fact-based sentences**.
+- **Do NOT use XML tags** in the output.
+</FORMATTING>
+"""
+
 
 reflection_instructions = """You are an expert research assistant analyzing a summary about {research_topic}.
 
