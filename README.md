@@ -8,8 +8,9 @@ A powerful **AI-driven research assistant** that automates financial research us
 
 ✅ **Automated Financial Research** – Fetches real-time data from top sources  
 ✅ **LLM-Powered Summarization** – Uses Groq/Ollama for structured insights  
-✅ **Real-Time Streaming** – Word-by-word response rendering for natural typing  
-✅ **Web Search APIs** – Supports Tavily, Perplexity, DuckDuckGo, and SearXNG  
+✅ **User-Friendly** - Deployable as a Chanilit UI for conversational applications
+✅ **Real-Time Streaming** – Word-by-word response rendering for natural typing
+✅ **Web Search APIs** – Supports Tavily, Perplexity, and DuckDuckGo
 ✅ **Docker Support** – Easily deployable using Docker  
 
 ---
