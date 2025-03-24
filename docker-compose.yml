@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  finance_research_agent:
+    build: .
+    container_name: finance_research_agent
+    ports:
+      - "8000:8000"  # Maps Chainlit port
+      - "8500:8500"  # Maps FastAPI port
+    env_file:
+      - .env  # Loads environment variables from .env file
+    command: /bin/sh -c "uvicorn fastapi_app:app --host 0.0.0.0 --port 8500 --reload & chainlit run app.py --host 0.0.0.0 --port 8000"
+
