@@ -204,57 +204,6 @@ def duckduckgo_search(query: str, max_results: int = 3, fetch_full_page: bool = 
         print(f"Full error details: {type(e).__name__}")
         return {"results": []}
 
-@traceable
-def searxng_search(query: str, max_results: int = 3, fetch_full_page: bool = False) -> Dict[str, List[Dict[str, Any]]]:
-    """
-    Search the web using SearXNG and return formatted results.
-    
-    Uses the SearxSearchWrapper to perform searches through a SearXNG instance.
-    The SearXNG host URL is read from the SEARXNG_URL environment variable
-    or defaults to http://localhost:8888.
-    
-    Args:
-        query (str): The search query to execute
-        max_results (int, optional): Maximum number of results to return. Defaults to 3.
-        fetch_full_page (bool, optional): Whether to fetch full page content from result URLs.
-                                         Defaults to False.
-        
-    Returns:
-        Dict[str, List[Dict[str, Any]]]: Search response containing:
-            - results (list): List of search result dictionaries, each containing:
-                - title (str): Title of the search result
-                - url (str): URL of the search result
-                - content (str): Snippet/summary of the content
-                - raw_content (str or None): Full page content if fetch_full_page is True,
-                                           otherwise same as content
-    """
-    host=os.environ.get("SEARXNG_URL", "http://localhost:8888")
-    s = SearxSearchWrapper(searx_host=host)
-
-    results = []
-    search_results = s.results(query, num_results=max_results)
-    for r in search_results:
-        url = r.get('link')
-        title = r.get('title')
-        content = r.get('snippet')
-        
-        if not all([url, title, content]):
-            print(f"Warning: Incomplete result from SearXNG: {r}")
-            continue
-
-        raw_content = content
-        if fetch_full_page:
-            raw_content = fetch_raw_content(url)
-        
-        # Add result to list
-        result = {
-            "title": title,
-            "url": url,
-            "content": content,
-            "raw_content": raw_content
-        }
-        results.append(result)
-    return {"results": results}
     
 @traceable
 def tavily_search(query: str, fetch_full_page: bool = True, max_results: int = 3, include_domains: List = []) -> Dict[str, List[Dict[str, Any]]]:
