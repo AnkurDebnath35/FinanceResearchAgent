@@ -31,7 +31,7 @@ class Configuration(BaseModel):
         title="LLM Model Name",
         description="Name of the LLM model to use"
     )
-    llm_provider: Literal["ollama", "lmstudio", "groq"] = Field(
+    llm_provider: Literal["ollama", "groq"] = Field(
         default=os.getenv("LLM_PROVIDER", "ollama"),
         title="LLM Provider",
         description="Provider for the LLM (Ollama, LMStudio, or Groq)"
