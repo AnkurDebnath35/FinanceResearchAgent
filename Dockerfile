@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Expose the port Chainlit runs on
-EXPOSE 8000
+EXPOSE 8000 8500
 
-# Command to run the app
-CMD ["chainlit", "run", "app.py", "--host", "0.0.0.0", "--port", "8000"]
+# Run both FastAPI and Chainlit in parallel
+CMD /bin/sh -c "uvicorn fastapi_app:app --host 0.0.0.0 --port 8500 --reload & chainlit run app.py --host 0.0.0.0 --port 8000"
