@@ -57,8 +57,6 @@ pip install -r requirements.txt
 Create a .env file in the root directory with:
 
 ```ini
-Copy
-Edit
 # Web Search API Keys
 TAVILY_API_KEY=your-tavily-api-key
 PERPLEXITY_API_KEY=your-perplexity-api-key
@@ -69,24 +67,72 @@ GROQ_API_KEY=your-groq-api-key
 OLLAMA_BASE_URL=http://localhost:11434
 ```
 ---
+4️⃣ Run the FastAPI Server: Start the FastAPI server to expose the research endpoint:
+```bash
+uvicorn fastapi_app:app --host 0.0.0.0 --port 8500 --reload
 
-4️⃣ Run the Chainlit App
+```
+Access the FastAPI Documentation: Once the server is running, navigate to http://localhost:8500/docs to view the interactive API documentation provided by FastAPI.
+
+5️⃣ Run the Chainlit App
 ```shell
 chainlit run app.py --host 0.0.0.0 --port 8000
 ```
 Access it at http://localhost:8000 🚀
 
+6️⃣ Using the FastAPI Endpoint
+The FastAPI server provides an endpoint to perform financial research.
+
+Endpoint: ```/run_research```
+
+Method: ```POST```
+
+Request Body:
+
+```json
+{
+  "research_topic": "Your research topic here"
+}
+```
+Response:
+
+```json
+
+{
+  "summary": "Generated research summary..."
+}
+```
+
+Example using curl:
+
+```bash
+
+curl -X POST "http://localhost:8500/run_research" \
+     -H "Content-Type: application/json" \
+     -d '{"research_topic": "Latest stock market trends"}'
+```
+
+Example using PowerShell:
+
+```powershell
+
+Invoke-RestMethod -Uri "http://localhost:8000/run_research" `
+  -Method Post `
+  -Headers @{"Content-Type"="application/json"} `
+  -Body '{"research_topic": "Latest stock market trends"}'
+```
+---
 🐳 Running with Docker
-1️⃣ Build the Docker Image
+7️⃣ Build the Docker Image
 ```bash
 docker build -t finance-research-agent .
 ```
 ---
 
-2️⃣ Run the Container
+8️⃣ Run the Container
 
 ```bash
-docker run --env-file .env -p 8000:8000 finance-research-agent
+docker run -p 8500:8500 -p 8000:8000 --env-file .env finance-research-agent
 Now, visit http://localhost:8000 🎯
 ```
 
@@ -94,13 +140,13 @@ Now, visit http://localhost:8000 🎯
 
 Modify FinResearcher/configuration.py to customize:
 
-  -LLM Provider (Groq, Ollama)
-  
-  -Search API (Tavily, Perplexity, DuckDuckGo)
-  
-  -Max Research Loops
-  
-  -Response Formatting
+    - LLM Provider (Groq, Ollama)
+    
+    - Search API (Tavily, Perplexity, DuckDuckGo)
+    
+    - Max Research Loops
+    
+    - Response Formatting
 
 📌 Example Usage
 💬 User: "Analyze the impact of AI on finance"
@@ -119,18 +165,23 @@ AI is transforming the finance industry by enhancing risk management, fraud dete
 🎯 Roadmap
 🚀 Upcoming Features:
 
-  - Conversation Memory with LangChain
-  
-  - Real-time News Fetching
-  
-  - Customizable Report Generation
+
+    - Conversation Memory with LangChain
+    
+    - Financial QA
+    
+    - Customizable Report Generation
+
 
 🤝 Contributing
+
 We welcome contributions! Fork the repo, create a new branch, and submit a pull request.
 
 📝 License
+
 This project is licensed under MIT License.
 
 📞 Contact
-For questions, reach out via: 📧 Email: ankurdebnath35@gmail.com
+For questions, reach out via: 
+📧 Email: ankurdebnath35@gmail.com
 🐦 Twitter: @yourhandle
