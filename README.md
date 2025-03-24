@@ -145,8 +145,8 @@ Modify FinResearcher/configuration.py to customize:
     - Search API (Tavily, Perplexity, DuckDuckGo)
     
     - Max Research Loops
-    
-    - Response Formatting
+
+    - Search Domains (INCLUDE_DOMAINS)
 
 📌 Example Usage
 💬 User: "Analyze the impact of AI on finance"
@@ -165,7 +165,10 @@ AI is transforming the finance industry by enhancing risk management, fraud dete
 🎯 Roadmap
 🚀 Upcoming Features:
 
+      
 
+    - Works good for local LLMs but with Provider hosted LLM, it makes too many calls (controled by ```MAX_WEB_RESEARCH_LOOPS```)
+    
     - Conversation Memory with LangChain
     
     - Financial QA
