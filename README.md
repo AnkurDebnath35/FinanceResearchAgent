@@ -46,7 +46,7 @@ cd FinanceResearchAgent
 
 ---
 
-2️⃣ Install Dependencies
+**2️⃣ Install Dependencies**  
 Ensure you have Python 3.10+ installed.
 
 ```shell
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 ```
 ---
 
-3️⃣ Set Up Environment Variables
+**3️⃣ Set Up Environment Variables**  
 Create a .env file in the root directory with:
 
 ```ini
@@ -68,20 +68,23 @@ GROQ_API_KEY=your-groq-api-key
 OLLAMA_BASE_URL=http://localhost:11434
 ```
 ---
-4️⃣ Run the FastAPI Server: Start the FastAPI server to expose the research endpoint:
+**4️⃣ Run the FastAPI Server**  
+Start the FastAPI server to expose the research endpoint:
 ```bash
 uvicorn fastapi_app:app --host 0.0.0.0 --port 8500 --reload
 
 ```
-Access the FastAPI Documentation: Once the server is running, navigate to http://localhost:8500/docs to view the interactive API documentation provided by FastAPI.
+**Access the FastAPI Documentation:** 
+Once the server is running, 
+navigate to http://localhost:8500/docs to view the interactive API documentation provided by FastAPI.
 
-5️⃣ Run the Chainlit App
+**5️⃣ Run the Chainlit App**
 ```shell
 chainlit run app.py --host 0.0.0.0 --port 8000
 ```
 Access it at http://localhost:8000 🚀
 
-6️⃣ Using the FastAPI Endpoint
+**6️⃣ Using the FastAPI Endpoint**  
 The FastAPI server provides an endpoint to perform financial research.
 
 Endpoint: ```/run_research```
@@ -123,26 +126,26 @@ Invoke-RestMethod -Uri "http://localhost:8000/run_research" `
   -Body '{"research_topic": "Latest stock market trends"}'
 ```
 ---
-🐳 Running with Docker  
-7️⃣ Build the Docker Image
+## 🐳 Running with Docker  
+**7️⃣ Build the Docker Image**
 ```bash
 docker build -t finance-research-agent .
 ```
 ---
 
-8️⃣ Run the Container
+**8️⃣ Run the Container**
 
 ```bash
 docker run -p 8500:8500 -p 8000:8000 --env-file .env finance-research-agent
 Now, visit http://localhost:8000 🎯
 ```
-9️⃣ Build & Run the Container using ```docker-compose.yml```
+**9️⃣ Build & Run the Container using ```docker-compose.yml```**
 ```bash
 docker-compose build
 docker-compose up
 ```
 
-🛠️ Configuration Options
+## 🛠️ Configuration Options
 
 Modify FinResearcher/configuration.py to customize:
 
@@ -154,7 +157,7 @@ Modify FinResearcher/configuration.py to customize:
 
     - Search Domains (INCLUDE_DOMAINS)
 
-📌 Example Usage
+## 📌 Example Usage
 💬 User: "Analyze the impact of AI on finance"
 🤖 AI Response:
 
@@ -168,8 +171,8 @@ AI is transforming the finance industry by enhancing risk management, fraud dete
 - Machine Learning for Risk - MIT Tech Review: https://technologyreview.com/ml-risk
 ```
 
-🎯 Roadmap
-🚀 Upcoming Features:
+## 🎯 Roadmap  
+## 🚀 Upcoming Features:
 
       
 
@@ -182,15 +185,15 @@ AI is transforming the finance industry by enhancing risk management, fraud dete
     - Customizable Report Generation
 
 
-🤝 Contributing
+## 🤝 Contributing
 
 We welcome contributions! Fork the repo, create a new branch, and submit a pull request.
 
-📝 License
+## 📝 License
 
 This project is licensed under MIT License.
 
-📞 Contact
-For questions, reach out via: 
-📧 Email: ankurdebnath35@gmail.com
+## 📞 Contact
+For questions, reach out via:  
+📧 Email: ankurdebnath35@gmail.com  
 🐦 Twitter: @yourhandle
