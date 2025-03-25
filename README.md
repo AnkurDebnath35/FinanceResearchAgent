@@ -137,8 +137,9 @@ docker build -t finance-research-agent .
 
 ```bash
 docker run -p 8500:8500 -p 8000:8000 --env-file .env finance-research-agent
-Now, visit http://localhost:8000 🎯
 ```
+Now, visit http://localhost:8000 🎯
+
 **9️⃣ Build & Run the Container using ```docker-compose.yml```**
 ```bash
 docker-compose build
